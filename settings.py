@@ -132,9 +132,10 @@ SESSION_CONFIG_DEFAULTS = {
 SESSION_CONFIGS = [
     {
     'name': 'my_trust',
-    'display_name': "My Trust Game (simple version from tutorial)",
+    'display_name': "My Trust Game (strategy form)",
     'num_demo_participants': 2,
     'app_sequence': ['my_trust'],
+    'use_strategy_method': True,
     },
     {
         'name': 'my_public_goods',
