@@ -131,11 +131,32 @@ SESSION_CONFIG_DEFAULTS = {
 
 SESSION_CONFIGS = [
     {
-    'name': 'my_trust',
-    'display_name': "My Trust Game (strategy form)",
-    'num_demo_participants': 2,
-    'app_sequence': ['my_trust'],
-    'use_strategy_method': True,
+        'name': 'my_trust',
+        'display_name': "My Trust Game (strategy method) Complete",
+        'real_world_currency_per_point': 0.20,
+        'participation_fee': 5.00,
+        'num_demo_participants': 2,
+        'app_sequence': ['trust_tutorial','my_trust','survey'],
+    },
+    {
+        'name': 'my_trust_game',
+        'display_name': "My Trust Game (strategy method)",
+        'real_world_currency_per_point': 0.20,
+        'participation_fee': 5.00,
+        'num_demo_participants': 2,
+        'app_sequence': ['my_trust'],
+    },
+    {
+        'name': 'my_trust_tutorial',
+        'display_name': "My Trust Game (strategy method) Tutorial",
+        'num_demo_participants': 2,
+        'app_sequence': ['trust_tutorial'],
+    },
+    {
+        'name': 'Mirco_survey',
+        'display_name': "Mirco's Survey",
+        'num_demo_participants': 1,
+        'app_sequence': ['survey', 'payment_info'],
     },
     {
         'name': 'my_public_goods',
@@ -167,12 +188,7 @@ SESSION_CONFIGS = [
         'num_demo_participants': 3,
         'app_sequence': ['guess_two_thirds', 'payment_info'],
     },
-    {
-        'name': 'survey',
-        'display_name': "Survey",
-        'num_demo_participants': 1,
-        'app_sequence': ['survey', 'payment_info'],
-    },
+
     {
         'name': 'quiz',
         'display_name': "Quiz",

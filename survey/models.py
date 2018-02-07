@@ -3,6 +3,8 @@ from otree.api import (
     Currency as c, currency_range
 )
 import random
+import math
+import statistics
 
 
 class Constants(BaseConstants):
@@ -27,55 +29,112 @@ class Player(BasePlayer):
         min=13, max=125)
 
     gender = models.CharField(
-        choices=['Male', 'Female'],
-        verbose_name='What is your gender?',
+        choices=['Male', 'Female','Transgender Female','Transgender Male','Gender Variant/Non-conforming','Not listed','Prefer not to answer'],
+        verbose_name='To which gender identity do you most identify?',
+        widget=widgets.RadioSelect())
+    other_g = models.CharField(blank=True,
+        verbose_name='If "Not listed," please specify')
+
+    Latinx_ethnicity = models.CharField(
+        choices=['Yes', 'No', 'Prefer not to answer'],
+        verbose_name='Do you consider yourself to be Hispanic or Latino/Latina/Latinx?',
+        widget=widgets.RadioSelect(),
+        # widget=widgets.forms.CheckboxSelectMultiple(),
+        )
+
+    # checkbox1 = models.BooleanField(initial=False)
+    # checkbox2 = models.BooleanField(initial=False)
+    # checkbox3 = models.BooleanField(initial=False)
+
+
+
+    race = models.CharField(
+        choices=[{'American Indian or Alaska Native','Asian'},'American Indian or Alaska Native','Asian','Black or African American','Native Hawaiian or Other Pacific Islander','White','Prefer not to respond'],
+        verbose_name='Regardless of your answer to the prior question, please check one or more of the following groups in which you consider yourself to be a member',
+        widget=widgets.RadioSelect(),
+        #widget=widgets.CheckboxSelectMultiple(),
+    blank=True)
+    other_r = models.CharField(blank=True,
+        verbose_name='If "Other," please specify')
+
+    income = models.CharField(
+        choices=['$0 to $19,999','$20,000 to $39,999','$40,000 to $59,999','$60,000 to $79,999','$80,000 to $99,999',
+                 '$100,000 to $119,999','$120,000 to $159,999','$160,000 or more','Prefer not to answer'],
+        verbose_name='Plese estimate your gross family income',
         widget=widgets.RadioSelect())
 
-    q1 = models.PositiveIntegerField(
-        verbose_name='Is outgoing, sociable.',
-        min=1, max=5)
-    q2 = models.PositiveIntegerField(
+    education = models.CharField(
+        choices=['First year','Second year','Third year', 'Fourth year', 'Other','Prefer not to answer'],
+        verbose_name='What is your level of education? If not in College, pick "other" and please report your level of education below',
+        widget=widgets.RadioSelect())
+
+    other_e = models.CharField(blank=True,
+                               verbose_name='If "Other," please specify')
+
+
+    q1 = models.CharField(
+        verbose_name='I am someone who... '
+                     'Is outgoing, sociable.',
+        choices=['1:Disagree Strongly', '2:Disagree a little', '3: No opinion/neutral', '4: Agree a little', '5: Agree strongly'],
+        widget=widgets.RadioSelectHorizontal())
+    q2 = models.IntegerField(
         verbose_name='Is compassionate, has a soft heart.',
-        min=1, max=5)
+        choices=[1,2,3,4,5],
+        # choices = ['1','2','3','4','5'],
+        widget=widgets.RadioSelectHorizontal(),
+       )
     q3 = models.PositiveIntegerField(
         verbose_name='Tends to be disorganized.',
-        min=1, max=5)
+        widget=widgets.RadioSelectHorizontal(),
+        choices=[1, 2, 3, 4, 5])
     q4 = models.PositiveIntegerField(
         verbose_name='Is relaxed, handles stress well.',
-        min=1, max=5)
+        widget=widgets.RadioSelectHorizontal(),
+        choices=[1, 2, 3, 4, 5])
     q5 = models.PositiveIntegerField(
         verbose_name='Has few artistic interests.',
-        min=1, max=5)
+        widget=widgets.RadioSelectHorizontal(),
+        choices=[1, 2, 3, 4, 5])
     q6 = models.PositiveIntegerField(
         verbose_name='Has an assertive personality.',
-        min=1, max=5)
+        widget=widgets.RadioSelectHorizontal(),
+        choices=[1, 2, 3, 4, 5])
     q7 = models.PositiveIntegerField(
         verbose_name='Is respectful, treats others with respect.',
-        min=1, max=5)
+        widget=widgets.RadioSelectHorizontal(),
+        choices=[1, 2, 3, 4, 5])
     q8 = models.PositiveIntegerField(
         verbose_name='Tends to be lazy.',
-        min=1, max=5)
+        widget=widgets.RadioSelectHorizontal(),
+        choices=[1, 2, 3, 4, 5])
     q9 = models.PositiveIntegerField(
         verbose_name='Stays optimistic after experiencing a setback.',
-        min=1, max=5)
+        widget=widgets.RadioSelectHorizontal(),
+        choices=[1, 2, 3, 4, 5])
     q10 = models.PositiveIntegerField(
         verbose_name='Is curious about many different things. ',
-        min=1, max=5)
+        widget=widgets.RadioSelectHorizontal(),
+        choices=[1, 2, 3, 4, 5])
     q11 = models.PositiveIntegerField(
         verbose_name='Rarely feels excited or eager. ',
-        min=1, max=5)
+        widget=widgets.RadioSelectHorizontal(),
+        choices=[1, 2, 3, 4, 5])
     q12 = models.PositiveIntegerField(
         verbose_name='Tends to find fault with others. ',
-        min=1, max=5)
+        widget=widgets.RadioSelectHorizontal(),
+        choices=[1, 2, 3, 4, 5])
     q13 = models.PositiveIntegerField(
         verbose_name='Is dependable, steady. ',
-        min=1, max=5)
+        widget=widgets.RadioSelectHorizontal(),
+        choices=[1, 2, 3, 4, 5])
     q14 = models.PositiveIntegerField(
         verbose_name='Is moody, has up and down mood swings. ',
-        min=1, max=5)
+        widget=widgets.RadioSelectHorizontal(),
+        choices=[1, 2, 3, 4, 5])
     q15 = models.PositiveIntegerField(
         verbose_name='Is inventive, finds clever ways to do things. ',
-        min=1, max=5)
+        widget=widgets.RadioSelectHorizontal(),
+        choices=[1, 2, 3, 4, 5])
     q16 = models.PositiveIntegerField(
         verbose_name='Tends to be quiet. ',
         min=1, max=5)
@@ -212,7 +271,11 @@ class Player(BasePlayer):
         verbose_name='Is original, comes up with new ideas. ',
         min=1, max=5)
 
-    a = models.IntegerField(initial=(2+3))
+    "b = models.IntegerField(getattr(player, 'q59'))"
+    a = models.IntegerField(initial = 2)
+
+
+
     "a = model.Integer(2 + 3)"
 
     """"
@@ -283,3 +346,4 @@ class Player(BasePlayer):
         how many days would it take for the patch to cover half of the lake?
         '''
     )
+   #  1:Disagree Strongly, 2:Disagree a little, 3: No opinion/neutral, 4: Agree a little, 5: Agree strongly

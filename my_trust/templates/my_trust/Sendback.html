@@ -1,8 +1,8 @@
 {% extends "global/Page.html" %}
-{% load staticfiles otree_tags %}
+{% load staticfiles otree %}
 
 {% block title %}
-    Trust Game: Your Choice
+    Your Response
 {% endblock %}
 
 {% block content %}
@@ -10,11 +10,21 @@
     {% include 'my_trust/Instructions.html' %}
 
     <p>
-        You are Participant B. Participant A sent you {{group.sent_amount}}
-        and you received {{tripled_amount}}.
+        You are the <strong>responder</strong>.
     </p>
 
-    {% formfield group.sent_back_amount with label="How much do you want to send back?" %}
+    <p>
+        The proposer will send you a gift, which will be multiplied by {{ Constants.multiplication_factor }}.
+    </p>
+
+    <p>
+        Please choose below how you would respond to each of the possible
+        offers.
+    </p>
+
+    {% for field in form %}
+        {% formfield field %}
+    {% endfor %}
 
     {% next_button %}
 

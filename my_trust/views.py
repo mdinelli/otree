@@ -2,53 +2,148 @@ from otree.api import Currency as c, currency_range
 from . import models
 from ._builtin import Page, WaitPage
 from .models import Constants
+class Instructions(WaitPage):
+    # TODO - We probably only need to get these values for player 2 in the group
+
+    def after_all_players_arrive(self):
+        for p in self.group.get_players():
+            index = p.participant.vars['treatment_order'][self.round_number - 1]
+            p.participant.vars['e1'] = Constants.Treatment_matrix[index]['E1']
+            p.participant.vars['e2'] = Constants.Treatment_matrix[index]['E2']
+            p.participant.vars['m'] = Constants.Treatment_matrix[index]['M']
+
+        par1 = self.group.get_player_by_id(1).participant
+        par2 = self.group.get_player_by_id(2).participant
+        par1.vars['e1'] = par2.vars['e1']
+        par1.vars['e2'] = par2.vars['e2']
+        par1.vars['m'] = par2.vars['m']
 
 
 class Send(Page):
-
     form_model = models.Group
-    form_fields = ['sent_amount']
+    def get_form_fields(self):
+        if self.player.id_in_group == 1:
+            return ['sent_amount']
+        else:
+            return ['response_{}'.format(int(i)) for i in range(0,1 + int(self.participant.vars['e1']))]
 
-    def is_displayed(self):
-        return self.player.id_in_group == 1
+    def question(self, amount):
+        endow1_less_amount = self.participant.vars['e1'] - amount
+        endow2_plus_multiplied_amount = float(self.participant.vars['e2'] + (self.participant.vars['m'] * amount))
+
+        return 'How much would you like to send back if Player 1 sends you {},'.format(c(amount)) + \
+               ' with Player 1 keeping {}'.format(c(endow1_less_amount)) + \
+               ' and leaving you with {}'.format(c(endow2_plus_multiplied_amount))
+
+    # TODO - FINISH THIS LIST AFTER TESTING
+    def vars_for_template(self):
+        return {
+            'number_of_fields': self.participant.vars['e1'] + 1,
+            'response_00_label': self.question(0),
+            'response_01_label': self.question(1),
+            'response_02_label': self.question(2),
+            'response_03_label': self.question(3),
+            'response_04_label': self.question(4),
+            'response_05_label': self.question(5),
+            'response_06_label': self.question(6),
+            'response_07_label': self.question(7),
+            'response_08_label': self.question(8),
+            'response_09_label': self.question(9),
+            'response_10_label': self.question(10),
+            'response_11_label': self.question(11),
+            'response_12_label': self.question(12),
+            'response_13_label': self.question(13),
+            'response_14_label': self.question(14),
+            'response_15_label': self.question(15),
+        }
 
 
-class WaitForP1(WaitPage):
-    pass
+
+# TODO - Determine the max values for Player 1
+    def sent_amount_max(self):
+        return self.participant.vars['e1']
+
+    # TODO - Determine the max values for each response
+    # Helper function that does the math
+    def determine_max_for_gift_amount(self, amount):
+        return self.participant.vars['e2'] + (self.participant.vars['m'] * amount)
+
+    # These functions determine the max amount for each resopnse field
+    def response_0_max(self):
+        return self.determine_max_for_gift_amount(0)
+
+    def response_1_max(self):
+        return self.determine_max_for_gift_amount(1)
+
+    def response_2_max(self):
+        return self.determine_max_for_gift_amount(2)
+
+    def response_3_max(self):
+        return self.determine_max_for_gift_amount(3)
+
+    def response_4_max(self):
+        return self.determine_max_for_gift_amount(4)
+
+    def response_5_max(self):
+        return self.determine_max_for_gift_amount(5)
+
+    def response_6_max(self):
+        return self.determine_max_for_gift_amount(6)
+
+    def response_7_max(self):
+        return self.determine_max_for_gift_amount(7)
+
+    def response_8_max(self):
+        return self.determine_max_for_gift_amount(8)
+
+    def response_9_max(self):
+        return self.determine_max_for_gift_amount(9)
+
+    def response_10_max(self):
+        return self.determine_max_for_gift_amount(10)
+
+    def response_11_max(self):
+        return self.determine_max_for_gift_amount(11)
+
+    def response_12_max(self):
+        return self.determine_max_for_gift_amount(12)
+
+    def response_13_max(self):
+        return self.determine_max_for_gift_amount(13)
+
+    def response_14_max(self):
+        return self.determine_max_for_gift_amount(14)
+
+    def response_15_max(self):
+        return self.determine_max_for_gift_amount(15)
+
+
+
+
+
+
+
+
 
 class ResultsWaitPage(WaitPage):
 
     def after_all_players_arrive(self):
         self.group.set_payoffs()
 
-class SendBack(Page):
-
-    form_model = models.Group
-    form_fields = ['sent_back_amount']
-
-    def is_displayed(self):
-        return self.player.id_in_group == 2
-
+class Results(Page):
     def vars_for_template(self):
         return {
-            'tripled_amount': self.group.sent_amount * Constants.multiplication_factor
+            'tripled_amount':  self.group.sent_amount*self.player.participant.vars['m']
+
         }
 
-    def sent_back_amount_choices(self):
-        return currency_range(
-            c(0),
-            self.group.sent_amount * Constants.multiplication_factor,
-            c(1)
-        )
 
-class Results(Page):
-    pass
+
 
 
 page_sequence = [
+    Instructions,
     Send,
-    WaitForP1,
-    SendBack,
     ResultsWaitPage,
     Results,
 ]

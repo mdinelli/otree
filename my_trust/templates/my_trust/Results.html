@@ -1,5 +1,5 @@
 {% extends "global/Page.html" %}
-{% load staticfiles otree_tags %}
+{% load staticfiles otree %}
 
 {% block title %}
     Results
@@ -9,21 +9,24 @@
 
 {% if player.id_in_group == 1 %}
     <p>
-        You sent Participant B {{ group.sent_amount }}.
-        Participant B returned {{group.sent_back_amount}}.
+        In this round, you started with {{ player.participant.vars.e1 }}.
+        You sent {{ group.sent_amount }} to Player 2.
+        Player 2 returned {{group.sent_back_amount}}.
     </p>
 {% else %}
     <p>
-        Participant A sent you {{ group.sent_amount }}.
+        You started with {{ player.participant.vars.e2 }}.
+        Player 1 sent you {{ group.sent_amount }},
+        which was multiplied by {{ player.participant.vars.m }}, so that you received {{ tripled_amount }}.
         You returned {{group.sent_back_amount}}.
     </p>
 
 {% endif %}
 
     <p>
-    Therefore, your total payoff is {{ player.payoff }}.
+    Therefore, your total payoff for this round is {{ participant.vars.temp_payoff }}.
     </p>
 
-    {% include 'my_trust/Instructions.html' %}
 
+{% next_button %}
 {% endblock %}

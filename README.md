@@ -1,8 +1,50 @@
 # oTree
 
 oTree is a framework based on Python and Django that lets you build:
-testing
-testing 2
+Useful code:
+group_randomly(fixed_ID_in_group = True)
+app_sequence
+Constants.num_rounds
+self.player.in_round(self.round_number - 1).payoff
+after_all_players_arrive
+set the widget to RadioSelect or RadioSelectHorizontal
+SliderInput(attrs={'step': '0.01'})
+The {% formfield %} in the template must match the form_model and form_fields in the view
+vars_for_template()
+
+<script>
+SECOND = 1000 // milliseconds
+window.setTimeout(function(){
+    window.location.href = "https://www.some_other_website.com";
+}, 5 * 60 * SECOND); // 5 minutes
+</script>
+
+You were the {{ p.role }} and {% if p.is_winner %}
+                    won {% else %} lost {% endif %}
+
+
+class MyPage(Page):
+
+    form_model = 'player'
+    def get_form_fields(self):
+        if self.player.num_bids == 3:
+            return ['bid_1', 'bid_2', 'bid_3']
+        else:
+            return ['bid_1', 'bid_2']
+
+class MyPage(Page):
+
+    form_model = 'player'
+    form_fields = ['odd_negative']
+
+    def odd_negative_error_message(self, value):
+        is_odd = (value % 2 == 1)
+        is_negative = (value < 0)
+        if not (is_odd and is_negative):
+            return 'Must be odd and negative'
+
+30,35
+
 - Multiplayer strategy games, like the prisoner's dilemma, public goods game, and auctions
 - Controlled behavioral experiments in economics, psychology, and related fields
 - Surveys and quizzes
