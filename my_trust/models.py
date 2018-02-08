@@ -17,25 +17,29 @@ class Constants(BaseConstants):
     players_per_group = 2
     num_rounds = 5
 
-    endowment1 = c(10)
-    endowment2 = c(11)
-    send_increment = 1
-    Round = 1
+    # endowment1 = c(10)
+    # endowment2 = c(11)
+    # send_increment = 1
+    # Round = 1
+    #
+    # multiplication_factor = 3
+    #
+    #
+    # send_choices = currency_range(0, endowment1, send_increment)
 
-    multiplication_factor = 3
 
 
-    send_choices = currency_range(0, endowment1, send_increment)
+
     # C = {'E1': 10, 'E2': 10, 'M': 2}
     # T1 = {'E1': 7, 'E2': 10, 'M': 5}
     # T2 = {'E1': 10, 'E2': 15, 'M': 1}
     # T3 = {'E1': 10, 'E2': 10, 'M': 5}
     # T4 = {'E1': 10, 'E2': 10, 'M': 1}
-    C = {'E1': 1, 'E2': 10, 'M': 2.5}
-    T1 = {'E1': 2, 'E2': 10, 'M': 5.5}
-    T2 = {'E1': 3, 'E2': 15, 'M': 1.5}
-    T3 = {'E1': 4, 'E2': 10, 'M': 5.5}
-    T4 = {'E1': 5, 'E2': 10, 'M': 1.5}
+    C = {'E1': c(8), 'E2': c(12), 'M': 4}
+    T1 = {'E1': c(8), 'E2': c(10), 'M': 5}
+    T2 = {'E1': c(10), 'E2': c(12), 'M': 2}
+    T3 = {'E1': c(8), 'E2': c(12), 'M': 5}
+    T4 = {'E1': c(8), 'E2': c(12), 'M': 2}
 
     Treatment_matrix = [C, T1, T2, T3, T4]
 
@@ -84,15 +88,15 @@ class Group(BaseGroup):
 #
 #
 
-    sent_back_amount = models.FloatField()
+    sent_back_amount = models.IntegerField()
     # sent_amount = Q(2,0)
 
 
    # the label and max value are dynamically generated in the views.py
     sent_amount = models.IntegerField(min=0, max=100, widget=widgets.Slider(attrs={'step': '1'}))
 
-    response_0 = models.FloatField(min=0, max=100, widget=widgets.Slider(attrs={'step': '1'}))
-    response_1 = models.FloatField(min=0, max=100, widget=widgets.Slider(attrs={'step': '1'}))
+    response_0 = models.IntegerField(min=0, max=100, widget=widgets.Slider(attrs={'step': '1'}))
+    response_1 = models.IntegerField(min=0, max=100, widget=widgets.Slider(attrs={'step': '1'}))
     response_2 = models.IntegerField(min=0, max=100, widget=widgets.Slider(attrs={'step': '1'}))
     response_3 = models.IntegerField(min=0, max=100, widget=widgets.Slider(attrs={'step': '1'}))
     response_4 = models.IntegerField(min=0, max=100, widget=widgets.Slider(attrs={'step': '1'}))

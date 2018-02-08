@@ -29,7 +29,7 @@ class Send(Page):
 
     def question(self, amount):
         endow1_less_amount = self.participant.vars['e1'] - amount
-        endow2_plus_multiplied_amount = float(self.participant.vars['e2'] + (self.participant.vars['m'] * amount))
+        endow2_plus_multiplied_amount = int(self.participant.vars['e2'] + (self.participant.vars['m'] * amount))
 
         return 'How much would you like to send back if Player 1 sends you {},'.format(c(amount)) + \
                ' with Player 1 keeping {}'.format(c(endow1_less_amount)) + \

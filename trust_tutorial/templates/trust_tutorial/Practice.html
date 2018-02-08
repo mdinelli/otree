@@ -5,7 +5,12 @@
     Practice
 {% endblock %}
 
+
 {% block content %}
+
+
+    {% include 'trust_tutorial/Directions.html' %}
+
 {#<p>#}
 {#    For this experiment, you will play multiple rounds of a decision making game. In each round, you will be randomly assigned a partner. Your identity and the identity of your partner will remain confidential.#}
 {#There are two different roles in this game: Player 1 and Player 2. You and your partner will be randomly assigned to these two roles.#}
@@ -18,15 +23,27 @@
 <p>
     To make sure you understand the game, you will first do a couple of practice problems
 </p>
-<p>
-Suppose that the multiplication factor is {{ participant.vars.question_numbers.2 }} , P1's
-    endowment is {{ participant.vars.question_numbers.0 }} and P2's endowment is {{ participant.vars.question_numbers.1 }}.
-    If P1 sends {{ participant.vars.question_numbers.3 }} of their points to P2. How much does each player have before P2 sends anything back?
+{#<p>#}
+{#Suppose that the multiplication factor is {{ participant.vars.question_numbers.2 }} , P1's#}
+{#    endowment is {{ participant.vars.question_numbers.0 }} and P2's endowment is {{ participant.vars.question_numbers.1 }}.#}
+{#    If P1 sends {{ participant.vars.question_numbers.3 }} of their points to P2. How much does each player have before P2 sends anything back?#}
+{#</p>#}
+{#    {% formfield player.answer1 %}#}
+{#    {% formfield player.answer2 %}#}
+{#<p>#}
+
+    <p>
+Suppose that the multiplication factor is 2 , P1's
+    endowment is 12 and P2's endowment is 9.
+    If P1 sends 6 of their points to P2, how much does each player have before P2 sends anything back?
 </p>
     {% formfield player.answer1 %}
     {% formfield player.answer2 %}
 <p>
-Suppose that P2 sends back {{ participant.vars.question_numbers.4 }} points. How much does each player have after P2 does this?
+
+{#Suppose that P2 sends back {{ participant.vars.question_numbers.4 }} points. How much does each player have after P2 does this?#}
+
+Suppose that P2 sends back 4 points. How much does each player have after P2 does this?
 </p>
     {% formfield player.answer3 %}
     {% formfield player.answer4 %}

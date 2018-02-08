@@ -22,15 +22,17 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+    my_error_s = models.IntegerField(initial=0)
 
 
     age = models.PositiveIntegerField(
-        verbose_name='What is your age?',
-        min=13, max=125)
+        verbose_name='What is your age? If you prefer not to answer, put "0"',
+
+        min=0, max=125)
 
     gender = models.CharField(
         choices=['Male', 'Female','Transgender Female','Transgender Male','Gender Variant/Non-conforming','Not listed','Prefer not to answer'],
-        verbose_name='To which gender identity do you most identify?',
+        verbose_name='With which gender identity do you most identify?',
         widget=widgets.RadioSelect())
     other_g = models.CharField(blank=True,
         verbose_name='If "Not listed," please specify')
@@ -38,24 +40,17 @@ class Player(BasePlayer):
     Latinx_ethnicity = models.CharField(
         choices=['Yes', 'No', 'Prefer not to answer'],
         verbose_name='Do you consider yourself to be Hispanic or Latino/Latina/Latinx?',
-        widget=widgets.RadioSelect(),
-        # widget=widgets.forms.CheckboxSelectMultiple(),
+        widget=widgets.RadioSelect()
         )
-
-    # checkbox1 = models.BooleanField(initial=False)
-    # checkbox2 = models.BooleanField(initial=False)
-    # checkbox3 = models.BooleanField(initial=False)
-
 
 
     race = models.CharField(
-        choices=[{'American Indian or Alaska Native','Asian'},'American Indian or Alaska Native','Asian','Black or African American','Native Hawaiian or Other Pacific Islander','White','Prefer not to respond'],
+        choices=['American Indian or Alaska Native','Asian','Black or African American','Native Hawaiian or Other Pacific Islander','White','Not listed or Multiracial','Prefer not to respond'],
         verbose_name='Regardless of your answer to the prior question, please check one or more of the following groups in which you consider yourself to be a member',
-        widget=widgets.RadioSelect(),
-        #widget=widgets.CheckboxSelectMultiple(),
-    blank=True)
+        widget=widgets.RadioSelect()
+    )
     other_r = models.CharField(blank=True,
-        verbose_name='If "Other," please specify')
+        verbose_name='If "Not listed or Multiracial," please specify')
 
     income = models.CharField(
         choices=['$0 to $19,999','$20,000 to $39,999','$40,000 to $59,999','$60,000 to $79,999','$80,000 to $99,999',
@@ -64,7 +59,7 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect())
 
     education = models.CharField(
-        choices=['First year','Second year','Third year', 'Fourth year', 'Other','Prefer not to answer'],
+        choices=['College first year/Freshman','College second year/Sophomore','College third year/Junior', 'College fourth year/Senior', 'Other','Prefer not to answer'],
         verbose_name='What is your level of education? If not in College, pick "other" and please report your level of education below',
         widget=widgets.RadioSelect())
 
@@ -73,210 +68,307 @@ class Player(BasePlayer):
 
 
     q1 = models.CharField(
-        verbose_name='I am someone who... '
-                     'Is outgoing, sociable.',
+        verbose_name='Is outgoing, sociable.',
         choices=['1:Disagree Strongly', '2:Disagree a little', '3: No opinion/neutral', '4: Agree a little', '5: Agree strongly'],
+        blank=True,
         widget=widgets.RadioSelectHorizontal())
     q2 = models.IntegerField(
         verbose_name='Is compassionate, has a soft heart.',
         choices=[1,2,3,4,5],
-        # choices = ['1','2','3','4','5'],
+        blank=True,
         widget=widgets.RadioSelectHorizontal(),
        )
     q3 = models.PositiveIntegerField(
         verbose_name='Tends to be disorganized.',
         widget=widgets.RadioSelectHorizontal(),
+        blank=True,
         choices=[1, 2, 3, 4, 5])
     q4 = models.PositiveIntegerField(
         verbose_name='Is relaxed, handles stress well.',
         widget=widgets.RadioSelectHorizontal(),
+        blank=True,
         choices=[1, 2, 3, 4, 5])
     q5 = models.PositiveIntegerField(
         verbose_name='Has few artistic interests.',
         widget=widgets.RadioSelectHorizontal(),
+        blank=True,
         choices=[1, 2, 3, 4, 5])
     q6 = models.PositiveIntegerField(
         verbose_name='Has an assertive personality.',
         widget=widgets.RadioSelectHorizontal(),
+        blank=True,
         choices=[1, 2, 3, 4, 5])
     q7 = models.PositiveIntegerField(
         verbose_name='Is respectful, treats others with respect.',
         widget=widgets.RadioSelectHorizontal(),
+        blank=True,
         choices=[1, 2, 3, 4, 5])
     q8 = models.PositiveIntegerField(
         verbose_name='Tends to be lazy.',
         widget=widgets.RadioSelectHorizontal(),
+        blank=True,
         choices=[1, 2, 3, 4, 5])
     q9 = models.PositiveIntegerField(
         verbose_name='Stays optimistic after experiencing a setback.',
         widget=widgets.RadioSelectHorizontal(),
+        blank=True,
         choices=[1, 2, 3, 4, 5])
     q10 = models.PositiveIntegerField(
         verbose_name='Is curious about many different things. ',
         widget=widgets.RadioSelectHorizontal(),
+        blank=True,
         choices=[1, 2, 3, 4, 5])
     q11 = models.PositiveIntegerField(
         verbose_name='Rarely feels excited or eager. ',
         widget=widgets.RadioSelectHorizontal(),
+        blank=True,
         choices=[1, 2, 3, 4, 5])
     q12 = models.PositiveIntegerField(
         verbose_name='Tends to find fault with others. ',
         widget=widgets.RadioSelectHorizontal(),
+        blank=True,
         choices=[1, 2, 3, 4, 5])
     q13 = models.PositiveIntegerField(
         verbose_name='Is dependable, steady. ',
         widget=widgets.RadioSelectHorizontal(),
+        blank=True,
         choices=[1, 2, 3, 4, 5])
     q14 = models.PositiveIntegerField(
         verbose_name='Is moody, has up and down mood swings. ',
         widget=widgets.RadioSelectHorizontal(),
+        blank=True,
         choices=[1, 2, 3, 4, 5])
     q15 = models.PositiveIntegerField(
         verbose_name='Is inventive, finds clever ways to do things. ',
         widget=widgets.RadioSelectHorizontal(),
+        blank=True,
         choices=[1, 2, 3, 4, 5])
     q16 = models.PositiveIntegerField(
         verbose_name='Tends to be quiet. ',
-        min=1, max=5)
+        widget=widgets.RadioSelectHorizontal(),
+        blank=True,
+        choices=[1, 2, 3, 4, 5])
     q17 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Feels little sympathy for others. ',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q18 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Is systematic, likes to keep things in order. ',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q19 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Can be tense. ',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q20 = models.PositiveIntegerField(
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Is fascinated by art, music, or literature. ',
-        min=1, max=5)
+        blank=True,
+        choices=[1, 2, 3, 4, 5])
     q21 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Is dominant, acts as a leader. ',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q22 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Starts arguments with others. ',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q23 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Has difficulty getting started on tasks. ',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q24 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Feels secure, comfortable with self. ',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q25 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Avoids intellectual, philosophical discussions. ',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q26 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Is less active than other people. ',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q27 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Has a forgiving nature. ',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q28 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Can be somewhat careless. ',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q29 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Is emotionally stable, not easily upset.',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q30 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Has little creativity. ',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q31 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Is sometimes shy, introverted. ',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q32 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Is helpful and unselfish with others.',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q33 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Keeps things neat and tidy.',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q34 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Worries a lot.',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q35 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Values art and beauty.',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q36 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Finds it hard to influence people.',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q37 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Is sometimes rude to others.',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q38 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Is efficient, gets things done. ',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q39 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Often feels sad.',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q40 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Is complex, a deep thinker. ',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q41 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Is full of energy. ',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q42 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Is suspicious of others’ intentions. ',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q43 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Is reliable, can always be counted on. ',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q44 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Keeps their emotions under control. ',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q45 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Has difficulty imagining things.',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q46 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Is talkative. ',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q47 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Can be cold and uncaring.',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q48 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Leaves a mess, doesn’t clean up. ',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q49 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Rarely feels anxious or afraid. ',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q50 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Thinks poetry and plays are boring. ',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q51 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Prefers to have others take charge. ',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q52 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Is polite, courteous to others. ',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q53 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Is persistent, works until the task is finished. ',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q54 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Tends to feel depressed, blue. ',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q55 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Has little interest in abstract ideas.',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q56 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Shows a lot of enthusiasm. ',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q57 = models.PositiveIntegerField(
+        blank=True,
         verbose_name='Assumes the best about people. ',
-        min=1, max=5)
+        widget=widgets.RadioSelectHorizontal(),
+        choices=[1, 2, 3, 4, 5])
     q58 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Sometimes behaves irresponsibly. ',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q59 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Is temperamental, gets emotional easily. ',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
     q60 = models.PositiveIntegerField(
+        blank=True,
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name='Is original, comes up with new ideas. ',
-        min=1, max=5)
+        choices=[1, 2, 3, 4, 5])
 
-    "b = models.IntegerField(getattr(player, 'q59'))"
-    a = models.IntegerField(initial = 2)
-
-
-
-    "a = model.Integer(2 + 3)"
 
     """"
     Sociability: q1, (6-q16),(6-q31), q46
