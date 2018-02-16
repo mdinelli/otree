@@ -10,12 +10,10 @@ class Demographics(Page):
                    'gender',
                    'other_g',
                    'Latinx_ethnicity',
-                   # 'checkbox1',
-                   # 'checkbox2',
-                   # 'checkbox3',
                    'race',
                    'other_r',
                    'education',
+                   'other_e',
                    'income',
                    ]
 
@@ -102,10 +100,12 @@ class CognitiveReflectionTest(Page):
     form_fields = ['crt_bat',
                    'crt_widget',
                    'crt_lake']
-
+class Results(Page):
+    pass
 
 page_sequence = [
     Demographics,
     Personality,
-    CognitiveReflectionTest
+    CognitiveReflectionTest,
+    Results
 ]

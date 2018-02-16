@@ -33,9 +33,9 @@
 {#<p>#}
 
     <p>
-Suppose that the multiplication factor is 2 , P1's
-    endowment is 12 and P2's endowment is 9.
-    If P1 sends 6 of their points to P2, how much does each player have before P2 sends anything back?
+Suppose that the multiplication factor is <strong>2</strong> , <strong>P1</strong>'s
+    endowment is <strong>12</strong> and  <strong>P2</strong>'s endowment is <strong>9</strong>.
+    If <strong>P1</strong> sends <strong>6</strong> of their points to P2, how much does each player have before P2 sends anything back?
 </p>
     {% formfield player.answer1 %}
     {% formfield player.answer2 %}
@@ -43,17 +43,20 @@ Suppose that the multiplication factor is 2 , P1's
 
 {#Suppose that P2 sends back {{ participant.vars.question_numbers.4 }} points. How much does each player have after P2 does this?#}
 
-Suppose that P2 sends back 4 points. How much does each player have after P2 does this?
+Suppose that  <strong>P2</strong> sends back <strong>4</strong> points. How much does each player have after  <strong>P2</strong> does this?
 </p>
     {% formfield player.answer3 %}
     {% formfield player.answer4 %}
 
-<p>
-Suppose that the multiplication factor is 3, P1's endowment is 17 and P2's endowment is 20.
-    If P1 sends 4 of their points to P2. How much does each player have before P2 sends anything back?
-</p>
-    {% formfield player.answer5 %}
-    {% formfield player.answer6 %}
+{#<p>#}
+{#Suppose that the multiplication factor is 3, P1's endowment is 17 and P2's endowment is 20.#}
+{#    If P1 sends 4 of their points to P2. How much does each player have before P2 sends anything back?#}
+{#</p>#}
+{#    {% formfield player.answer5 %}#}
+{#    {% formfield player.answer6 %}#}
+
+
+
 {% next_button %}
 {% endblock %}
 

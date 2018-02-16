@@ -10,13 +10,13 @@
 {% if player.id_in_group == 1 %}
     <p>
         In this round, you started with {{ player.participant.vars.e1 }}.
-        You sent {{ group.sent_amount }} to Player 2.
-        Player 2 returned {{group.sent_back_amount}}.
+        You sent {{ group.sent_amount }} to  <strong>P2</strong>.
+         <strong>P2</strong> returned {{group.sent_back_amount}}.
     </p>
 {% else %}
     <p>
         You started with {{ player.participant.vars.e2 }}.
-        Player 1 sent you {{ group.sent_amount }},
+        <strong>P1</strong> sent you {{ group.sent_amount }},
         which was multiplied by {{ player.participant.vars.m }}, so that you received {{ tripled_amount }}.
         You returned {{group.sent_back_amount}}.
     </p>

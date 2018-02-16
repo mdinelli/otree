@@ -12,11 +12,11 @@
 {#</p>#}
 
     <p>
-   This is a game with 2 players.
+
    <br>
-   Paramaters for this round:
-       <br>    Player 1's Endowment:           {{ player.participant.vars.e1}}
-       <br>    Player 2's Endowment:           {{ player.participant.vars.e2}}
+   Settings for this round:
+       <br>    P1's Endowment:           {{ player.participant.vars.e1}}
+       <br>    P2's Endowment:           {{ player.participant.vars.e2}}
        <br>    Multiplier:           {{ player.participant.vars.m}}
 {#       <br>    Round Number:           {{ player.round_number }}#}
 {#       <br>    treatment_order array (static over 5 rounds):  {{  player.participant.vars.treatment_order }}#}
@@ -26,12 +26,12 @@
 <p>Instructions for this round:</p>
     <p></p>
 <p>
-    To start, Player 1 receives {{ player.participant.vars.e1 }};
-    Player 2 receives {{ player.participant.vars.e2 }}.
-    Player 1 can send some or all of their {{ player.participant.vars.e1}} to Player 2.
-    Before Player 2 receives these points they will be multiplied by {{ player.participant.vars.m }}.
-    Player 2 decides how they would respond to each possible action from Player 1, and their responses are matched to
-    Player 1's actual choice to determine payoffs.
+    To start,   <strong>P1</strong> receives <strong>{{ player.participant.vars.e1 }}</strong>;
+     <strong>P2</strong> receives <strong>{{ player.participant.vars.e2 }}</strong>.
+     <strong>P1</strong> can send some or all of their <strong>{{ player.participant.vars.e1 }}</strong> to Player 2.
+    Before <strong>P2</strong> receives these points they will be multiplied by <strong>{{ player.participant.vars.m }}</strong>.
+    <strong>P2</strong> decides how they would respond to each possible action from <strong>P1</strong>, and their responses are matched to
+    <strong>P1</strong>'s actual choice to determine payoffs.
 </p>
 
 </div>

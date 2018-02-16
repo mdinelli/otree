@@ -39,27 +39,34 @@ class Player(BasePlayer):
 
     Latinx_ethnicity = models.CharField(
         choices=['Yes', 'No', 'Prefer not to answer'],
-        verbose_name='Do you consider yourself to be Hispanic or Latino/Latina/Latinx?',
+        verbose_name='Do you consider yourself to be Hispanic or Latino/Latina/Latinx?'
+                     '(A person of Cuban, Mexican, Puerto Rican, South or Central American, or other Spanish culture or origin, regardless of race)',
         widget=widgets.RadioSelect()
         )
 
 
     race = models.CharField(
-        choices=['American Indian or Alaska Native','Asian','Black or African American','Native Hawaiian or Other Pacific Islander','White','Not listed or Multiracial','Prefer not to respond'],
-        verbose_name='Regardless of your answer to the prior question, please check one or more of the following groups in which you consider yourself to be a member',
+        choices=['American Indian or Alaska Native','Asian','Black or African American',
+                 'Native Hawaiian or Other Pacific Islander'
+                 '(A person having origins in any of the original peoples of Hawaii, Guam, Samoa, or other Pacific Islands)',
+                 'White(A person having origins in any of the original peoples of Europe, the Middle East, or North Africa)',
+                 'Not listed or Multiracial','Prefer not to answer'],
+        verbose_name='Regardless of your answer to the prior question, please choose one or more of the following groups '
+                     'in which you consider yourself to be a member',
         widget=widgets.RadioSelect()
     )
     other_r = models.CharField(blank=True,
         verbose_name='If "Not listed or Multiracial," please specify')
 
     income = models.CharField(
-        choices=['$0 to $19,999','$20,000 to $39,999','$40,000 to $59,999','$60,000 to $79,999','$80,000 to $99,999',
+        choices=['$0 to $59,999','$60,000 to $79,999','$80,000 to $99,999',
                  '$100,000 to $119,999','$120,000 to $159,999','$160,000 or more','Prefer not to answer'],
-        verbose_name='Plese estimate your gross family income',
+        verbose_name='Please estimate your gross family income',
         widget=widgets.RadioSelect())
 
     education = models.CharField(
-        choices=['College first year/Freshman','College second year/Sophomore','College third year/Junior', 'College fourth year/Senior', 'Other','Prefer not to answer'],
+        choices=['College first year/Freshman','College second year/Sophomore','College third year/Junior',
+                 'College fourth year/Senior', 'Other','Prefer not to answer'],
         verbose_name='What is your level of education? If not in College, pick "other" and please report your level of education below',
         widget=widgets.RadioSelect())
 

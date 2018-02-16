@@ -11,30 +11,26 @@
 
 {% if player.id_in_group == 1 %}
     <p>
-    You are <strong>Player 1</strong>. Now you have {{participant.vars.e1}}.
+    You are <strong>P1</strong>. Now you have <strong>{{ participant.vars.e1 }}</strong>.
     </p>
 
-    {% formfield group.sent_amount label="How much do you want to send to Player 2?" %}
+    {% formfield group.sent_amount label="How much do you want to send to P2?" %}
 
     {% next_button %}
 {% else %}
 
     <p>
-        You are <strong>Player 2</strong>.
+        You are <strong>P2</strong>.
     </p>
 
     <p>
-        Player 1 will send you a some of their points, which will be multiplied by {{ participant.vars.m }}.
+        <strong>P1</strong> will send you a some of their points, which will be multiplied by <strong>{{ participant.vars.m }}</strong>.
     </p>
 
     <p>
         Please choose below how you would respond to each scenario:
     </p>
 
-
-     <p>
-        Please choose below how you would respond to each scenario:
-    </p>
 
    {% if number_of_fields >= 1 %}     {% formfield group.response_0 label=response_00_label %}   {% endif %}
    {% if number_of_fields >= 2 %}     {% formfield group.response_1 label=response_01_label %}   {% endif %}

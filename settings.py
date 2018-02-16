@@ -134,7 +134,7 @@ SESSION_CONFIGS = [
         'name': 'my_trust',
         'display_name': "My Trust Game (strategy method) Complete",
         'real_world_currency_per_point': 0.25,
-        'participation_fee': 5.00,
+        'participation_fee': 7.00,
         'num_demo_participants': 2,
         'app_sequence': ['trust_tutorial','my_trust','survey'],
     },
