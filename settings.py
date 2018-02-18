@@ -14,7 +14,7 @@ if environ.get('OTREE_PRODUCTION') not in {None, '', '0'}:
     DEBUG = False
 else:
     DEBUG = True
-DEBUG = False
+DEBUG = True
 # don't share this with anybody.
 SECRET_KEY = '(_=(px3o2-4j1ocuq-%%)-9gn1%b+-2a_*bz*psp4k&#inb(m0'
 #SENTRY_DSN = 'http://18f1b7e7426a4273ba82cb3cf653330e:dec83a7be61e48c285fd46dd9ebf0aa2@sentry.otree.org/273'
@@ -101,11 +101,11 @@ ROOMS = [
         'name': 'live_demo',
         'display_name': 'Room for live demo (no participant labels)',
     },
-# {
-#         'name': "Mirco_Experiment",
-#         'display_name': 'Pick this one!',
-#         'participant_label_file': '_rooms/Mirco room',
-#     },
+{
+        'name': "Mirco_Experiment",
+        'display_name': 'Pick this one!',
+        'participant_label_file': '_rooms/Mirco room',
+    },
 ]
 
 
