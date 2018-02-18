@@ -101,6 +101,11 @@ ROOMS = [
         'name': 'live_demo',
         'display_name': 'Room for live demo (no participant labels)',
     },
+{
+        'name': "Mirco_Experiment",
+        'display_name': 'Pick this one!',
+        'participant_label_file': '_rooms/Mirco room',
+    },
 ]
 
 
