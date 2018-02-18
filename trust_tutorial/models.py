@@ -50,12 +50,12 @@ class Player(BasePlayer):
     answer4 = models.PositiveIntegerField(
         verbose_name='4.How much does P2 now have?',
         min=0, max=125)
-    answer5 = models.PositiveIntegerField(
-        verbose_name='5.How much does P1 now have?',
-        min=0, max=125)
-    answer6 = models.PositiveIntegerField(
-        verbose_name='6.How much does P2 now have?',
-        min=0, max=125)
+    # answer5 = models.PositiveIntegerField(
+    #     verbose_name='5.How much does P1 now have?',
+    #     min=0, max=125)
+    # answer6 = models.PositiveIntegerField(
+    #     verbose_name='6.How much does P2 now have?',
+    #     min=0, max=125)
     my_error = models.IntegerField(initial=0)
 
 

@@ -58,13 +58,13 @@ class Practice(Page):
 
 
 
-        if values["answer5"] != 13:
-            self.player.my_error = self.player.my_error + 1
-            error_string = error_string + 'Your answer to question 5 was incorrect. '
-
-        if values["answer6"] != 32:
-            self.player.my_error = self.player.my_error + 1
-            error_string = error_string + 'Your answer to question 6 was incorrect. '
+        # if values["answer5"] != 13:
+        #     self.player.my_error = self.player.my_error + 1
+        #     error_string = error_string + 'Your answer to question 5 was incorrect. '
+        #
+        # if values["answer6"] != 32:
+        #     self.player.my_error = self.player.my_error + 1
+        #     error_string = error_string + 'Your answer to question 6 was incorrect. '
 
         if error_string != '':
             return error_string + ' \n Try again!'
