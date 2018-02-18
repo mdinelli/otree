@@ -12,8 +12,9 @@ class Practice(Page):
                    'answer2',
                    'answer3',
                    'answer4',
-                   'answer5',
-                   'answer6']
+                   # 'answer5',
+                   # 'answer6'
+                    ]
 
     def error_message(self, values):
         error_string= ''

@@ -135,7 +135,9 @@ class Group(BaseGroup):
                 random.shuffle(p2.participant.vars['payoff_array'])
 
                 p1.payoff = p1.participant.vars['payoff_array'][0]
+                p1.participant.vars['money'] = float(p1.payoff*0.25)
                 p2.payoff = p2.participant.vars['payoff_array'][0]
+                p2.participant.vars['money'] = float(p2.payoff * 0.25)
 
 
             # p1.participant.vars['winnings array'][p1.round_number-1]= p1.payoff

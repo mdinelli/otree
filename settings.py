@@ -50,7 +50,7 @@ AUTH_LEVEL = environ.get('OTREE_AUTH_LEVEL')
 ADMIN_USERNAME = 'admin'
 # for security, best to set admin password in an environment variable
 ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
-OTREE_PRODUCTION = 1,
+
 
 # setting for integration with AWS Mturk
 AWS_ACCESS_KEY_ID = environ.get('AWS_ACCESS_KEY_ID')
@@ -136,7 +136,6 @@ SESSION_CONFIGS = [
         'real_world_currency_per_point': 0.25,
         'participation_fee': 7.00,
         'num_demo_participants': 2,
-        'OTREE_PRODUCTION':1,
         'app_sequence': ['trust_tutorial','my_trust','survey'],
 
     },
