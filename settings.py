@@ -61,7 +61,7 @@ AWS_SECRET_ACCESS_KEY = environ.get('AWS_SECRET_ACCESS_KEY')
 REAL_WORLD_CURRENCY_CODE = 'USD'
 USE_POINTS = True
 
-
+#harmless change
 
 # e.g. en, de, fr, it, ja, zh-hans
 # see: https://docs.djangoproject.com/en/1.9/topics/i18n/#term-language-code
@@ -101,11 +101,11 @@ ROOMS = [
         'name': 'live_demo',
         'display_name': 'Room for live demo (no participant labels)',
     },
-{
-        'name': "Mirco_Experiment",
-        'display_name': 'Pick this one!',
-        'participant_label_file': '_rooms/Mirco room',
-    },
+# {
+#         'name': "Mirco_Experiment",
+#         'display_name': 'Pick this one!',
+#         'participant_label_file': '_rooms/Mirco room',
+#     },
 ]
 
 
