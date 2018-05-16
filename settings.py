@@ -101,11 +101,11 @@ ROOMS = [
         'name': 'live_demo',
         'display_name': 'Room for live demo (no participant labels)',
     },
-# {
-#         'name': "Mirco_Experiment",
-#         'display_name': 'Pick this one!',
-#         'participant_label_file': '_rooms/Mirco room',
-#     },
+{
+        'name': "Mirco_Experiment",
+        'display_name': 'Pick this one!',
+        'participant_label_file': '_rooms/Mirco room',
+    },
 ]
 
 
@@ -138,7 +138,7 @@ SESSION_CONFIGS = [
     {
         'name': 'my_trust',
         'display_name': "My Trust Game (strategy method) Complete",
-        'real_world_currency_per_point': 0.25,
+        'real_world_currency_per_point': 0.40,
         'participation_fee': 7.00,
         'num_demo_participants': 2,
         'app_sequence': ['trust_tutorial','my_trust','survey'],

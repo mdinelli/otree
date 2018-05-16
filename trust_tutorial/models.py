@@ -39,16 +39,16 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     answer1 = models.PositiveIntegerField(
-        verbose_name='1.How much does P1 now have?',
+        verbose_name='1. How much does P1 now have?',
         min=0, max=125)
     answer2 = models.PositiveIntegerField(
-        verbose_name='2.How much does P2 now have?',
+        verbose_name='2. How much does P2 now have?',
         min=0, max=125)
     answer3 = models.PositiveIntegerField(
-        verbose_name='3.How much does P1 now have?',
+        verbose_name='3. How much does P1 now have?',
         min=0, max=125)
     answer4 = models.PositiveIntegerField(
-        verbose_name='4.How much does P2 now have?',
+        verbose_name='4. How much does P2 now have?',
         min=0, max=125)
     # answer5 = models.PositiveIntegerField(
     #     verbose_name='5.How much does P1 now have?',

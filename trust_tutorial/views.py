@@ -42,30 +42,20 @@ class Practice(Page):
 
         if values["answer1"] !=6:
             self.player.my_error = self.player.my_error + 1
-            error_string = error_string + 'Your answer to question 1 was incorrect. '
+            error_string = error_string + 'Your answer to question 1 was incorrect. The answer is 6. '
 
         if values["answer2"] !=21:
             self.player.my_error = self.player.my_error + 1
-            error_string = error_string + 'Your answer to question 2 was incorrect. '
+            error_string = error_string + 'Your answer to question 2 was incorrect. The answer is 21. '
 
 
         if values["answer3"] != 10:
             self.player.my_error = self.player.my_error + 1
-            error_string = error_string + 'Your answer to question 3 was incorrect. '
+            error_string = error_string + 'Your answer to question 3 was incorrect. The answer is 10. '
 
         if values["answer4"] != 17:
             self.player.my_error = self.player.my_error + 1
-            error_string = error_string + 'Your answer to question 4 was incorrect. '
-
-
-
-        # if values["answer5"] != 13:
-        #     self.player.my_error = self.player.my_error + 1
-        #     error_string = error_string + 'Your answer to question 5 was incorrect. '
-        #
-        # if values["answer6"] != 32:
-        #     self.player.my_error = self.player.my_error + 1
-        #     error_string = error_string + 'Your answer to question 6 was incorrect. '
+            error_string = error_string + 'Your answer to question 4 was incorrect. The answer is 17. '
 
         if error_string != '':
             return error_string + ' \n Try again!'

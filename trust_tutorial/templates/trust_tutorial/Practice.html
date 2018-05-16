@@ -11,34 +11,19 @@
 
     {% include 'trust_tutorial/Directions.html' %}
 
-{#<p>#}
-{#    For this experiment, you will play multiple rounds of a decision making game. In each round, you will be randomly assigned a partner. Your identity and the identity of your partner will remain confidential.#}
-{#There are two different roles in this game: Player 1 and Player 2. You and your partner will be randomly assigned to these two roles.#}
-{#Each of you will begin with an endowment, which will depend on the round. Player 1 will decide how many points (between 0 and their endowment) to send as a gift to Player 2. See below for a general example of Player 1’s choices. The instructions on your computer will provide more detail about initial conditions and on how much Player 2 receives from this gift.#}
-{#At the same time, Player 2 will specify how much s/he would like to send back (between 0 and their total wealth, after accounting for Player 1’s gift) to Player 1 as a gift, for each possible gift by Player 1. Player 1’s actual gift will then be matched to the corresponding response from Player 2 and payoffs will be generated.#}
-{#After Player 2’s decision, the round will end. From there, a new round will begin, where you will be randomly assigned a partner and role once again. Overall, you will play 10 rounds of this game, each time with a randomly assigned partner and role. The text below provides an outline of the game.#}
-{##}
-{#Player 2 specifies strategy; Player 1 sends a gift  Gift is multiplied by M  Player 2 sends Player 1 a gift according to Player 2’s stated strategy  Next round is played#}
-{#</p>#}
+
 <p>
     To make sure you understand the game, you will first do a couple of practice problems
 </p>
 
-{#<p>#}
-{#Suppose that the multiplication factor is {{ participant.vars.question_numbers.2 }} , P1's#}
-{#    endowment is {{ participant.vars.question_numbers.0 }} and P2's endowment is {{ participant.vars.question_numbers.1 }}.#}
-{#    If P1 sends {{ participant.vars.question_numbers.3 }} of their points to P2. How much does each player have before P2 sends anything back?#}
-{#</p>#}
-{#    {% formfield player.answer1 %}#}
-{#    {% formfield player.answer2 %}#}
-{#<p>#}
 
 <p>
 Suppose that the multiplication factor is <strong>2</strong> , <strong>P1</strong>'s
     endowment is <strong>12</strong> and  <strong>P2</strong>'s endowment is <strong>9</strong>.
-    If <strong>P1</strong> sends <strong>6</strong> of their points to P2, how much does each player have before P2 sends anything back?
+    If <strong>P1</strong> sends <strong>6</strong> of their points to <strong>P2</strong>, how much does each player have before <strong>P2</strong> sends anything back?
 </p>
     {% formfield player.answer1 %}
+
     {% formfield player.answer2 %}
 <p>
 
@@ -49,12 +34,6 @@ Suppose that  <strong>P2</strong> sends back <strong>4</strong> points. How much
     {% formfield player.answer3 %}
     {% formfield player.answer4 %}
 
-{#<p>#}
-{#Suppose that the multiplication factor is 3, P1's endowment is 17 and P2's endowment is 20.#}
-{#    If P1 sends 4 of their points to P2. How much does each player have before P2 sends anything back?#}
-{#</p>#}
-{#    {% formfield player.answer5 %}#}
-{#    {% formfield player.answer6 %}#}
 
 
 

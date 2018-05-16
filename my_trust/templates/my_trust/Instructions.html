@@ -1,9 +1,9 @@
 {% load otree staticfiles %}
 
 <div class="instructions well well-lg">
-
+{# changed the title and made the parameters in bold#}
     <h3 class="panel-sub-heading">
-        Instructions
+     <strong ><font size="+2">  Settings for this round:</font></strong>
     </h3>
 {#<p>#}
 {#    This is a game with 2 players.Hello, {{ player.participant.vars.e1}}  {{ player.participant.vars.e2}}  {{ player.participant.vars.m}}#}
@@ -13,8 +13,8 @@
 
     <p>
 
-   <br>
-   Settings for this round:
+   <br><strong >
+        <br>    Round number:           {{ subsession.round_number}}
        <br>    P1's Endowment:           {{ player.participant.vars.e1}}
        <br>    P2's Endowment:           {{ player.participant.vars.e2}}
        <br>    Multiplier:           {{ player.participant.vars.m}}
@@ -22,16 +22,16 @@
 {#       <br>    treatment_order array (static over 5 rounds):  {{  player.participant.vars.treatment_order }}#}
    <br><br>
 
-</p>
-<p>Instructions for this round:</p>
-    <p></p>
-<p>
-    To start,   <strong>P1</strong> receives <strong>{{ player.participant.vars.e1 }}</strong>;
-     <strong>P2</strong> receives <strong>{{ player.participant.vars.e2 }}</strong>.
-     <strong>P1</strong> can send some or all of their <strong>{{ player.participant.vars.e1 }}</strong> to Player 2.
-    Before <strong>P2</strong> receives these points they will be multiplied by <strong>{{ player.participant.vars.m }}</strong>.
-    <strong>P2</strong> decides how they would respond to each possible action from <strong>P1</strong>, and their responses are matched to
-    <strong>P1</strong>'s actual choice to determine payoffs.
-</p>
+{#</p>#}
+{#<p>Instructions for this round:</p>#}
+{#    <p></p>#}
+{#<p>#}
+{#    To start,   <strong>P1</strong> receives <strong>{{ player.participant.vars.e1 }}</strong>;#}
+{#     <strong>P2</strong> receives <strong>{{ player.participant.vars.e2 }}</strong>.#}
+{#     <strong>P1</strong> can send some or all of their <strong>{{ player.participant.vars.e1 }}</strong> to Player 2.#}
+{#    Before <strong>P2</strong> receives these points they will be multiplied by <strong>{{ player.participant.vars.m }}</strong>.#}
+{#    <strong>P2</strong> decides how they would respond to each possible action from <strong>P1</strong>, and their responses are matched to#}
+{#    <strong>P1</strong>'s actual choice to determine payoffs.#}
+{#</p>#}
 
 </div>

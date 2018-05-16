@@ -15,6 +15,8 @@ class Demographics(Page):
                    'education',
                    'other_e',
                    'income',
+                   'division',
+                   'other_d'
                    ]
 
     def error_message(self, values):
@@ -106,6 +108,6 @@ class Results(Page):
 page_sequence = [
     Demographics,
     Personality,
-    CognitiveReflectionTest,
+  #  CognitiveReflectionTest,
     Results
 ]

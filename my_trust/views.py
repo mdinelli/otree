@@ -5,18 +5,27 @@ from .models import Constants
 class Instructions(WaitPage):
     # TODO - We probably only need to get these values for player 2 in the group
 
+
     def after_all_players_arrive(self):
         for p in self.group.get_players():
             index = p.participant.vars['treatment_order'][self.round_number - 1]
             p.participant.vars['e1'] = Constants.Treatment_matrix[index]['E1']
+            p.e1 = Constants.Treatment_matrix[index]['E1']
             p.participant.vars['e2'] = Constants.Treatment_matrix[index]['E2']
+            p.e2 = Constants.Treatment_matrix[index]['E2']
             p.participant.vars['m'] = Constants.Treatment_matrix[index]['M']
+            p.m = Constants.Treatment_matrix[index]['M']
 
+        play1 = self.group.get_player_by_id(1)
+        play2 = self.group.get_player_by_id(2)
         par1 = self.group.get_player_by_id(1).participant
         par2 = self.group.get_player_by_id(2).participant
         par1.vars['e1'] = par2.vars['e1']
+        play1.e1 = play2.e1
         par1.vars['e2'] = par2.vars['e2']
+        play1.e2 = play2.e2
         par1.vars['m'] = par2.vars['m']
+        play1.m = play2.m
 
 
 class Send(Page):
@@ -31,9 +40,9 @@ class Send(Page):
         endow1_less_amount = self.participant.vars['e1'] - amount
         endow2_plus_multiplied_amount = int(self.participant.vars['e2'] + (self.participant.vars['m'] * amount))
 
-        return 'How much would you like to send back if Player 1 sends you {},'.format(c(amount)) + \
-               ' with Player 1 keeping {}'.format(c(endow1_less_amount)) + \
-               ' and leaving you with {}'.format(c(endow2_plus_multiplied_amount))
+        return 'P1 sends you {}. '.format(c(amount)) +  'You have {}'.format(c(endow2_plus_multiplied_amount))
+              # ' with Player 1 keeping {}'.format(c(endow1_less_amount)) + \
+
 
     # TODO - FINISH THIS LIST AFTER TESTING
     def vars_for_template(self):
@@ -133,7 +142,7 @@ class ResultsWaitPage(WaitPage):
 class Results(Page):
     def vars_for_template(self):
         return {
-            'tripled_amount':  self.group.sent_amount*self.player.participant.vars['m']
+            'npled_amount':  self.group.sent_amount*self.player.participant.vars['m']
 
         }
 

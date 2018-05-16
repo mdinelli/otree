@@ -24,12 +24,16 @@
     </p>
 
     <p>
-        <strong>P1</strong> will send you a some of their points, which will be multiplied by <strong>{{ participant.vars.m }}</strong>.
+        <strong>P1</strong> will send you some of their points, which will be multiplied by <strong>{{ participant.vars.m }}</strong>.
+    </p>
+    <p>
+       For each hypothetical outcome, please describe how you would respond.
+       Your response will be matched with <strong>P1</strong>’s actual choice to determine your payoffs:
     </p>
 
-    <p>
-        Please choose below how you would respond to each scenario:
-    </p>
+{#    <p>#}
+{#        Please choose below how mcuh you would like to send back in each scenario:#}
+{#    </p>#}
 
 
    {% if number_of_fields >= 1 %}     {% formfield group.response_0 label=response_00_label %}   {% endif %}
@@ -47,6 +51,7 @@
    {% if number_of_fields >= 13 %}    {% formfield group.response_12 label=response_12_label %}  {% endif %}
    {% if number_of_fields >= 14 %}    {% formfield group.response_13 label=response_13_label %}  {% endif %}
    {% if number_of_fields >= 15 %}    {% formfield group.response_14 label=response_14_label %}  {% endif %}
+   {% if number_of_fields >= 16 %}    {% formfield group.response_14 label=response_15_label %}  {% endif %}
 
    {% next_button %}
 

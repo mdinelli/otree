@@ -39,17 +39,17 @@ class Player(BasePlayer):
 
     Latinx_ethnicity = models.CharField(
         choices=['Yes', 'No', 'Prefer not to answer'],
-        verbose_name='Do you consider yourself to be Hispanic or Latino/Latina/Latinx?'
-                     '(A person of Cuban, Mexican, Puerto Rican, South or Central American, or other Spanish culture or origin, regardless of race)',
+        verbose_name='Do you consider yourself to be Hispanic or Latino/Latina/Latinx '
+                     '(A person of Cuban, Mexican, Puerto Rican, South or Central American, or other Spanish culture or origin, regardless of race)?',
         widget=widgets.RadioSelect()
         )
 
 
     race = models.CharField(
         choices=['American Indian or Alaska Native','Asian','Black or African American',
-                 'Native Hawaiian or Other Pacific Islander'
+                 'Native Hawaiian or Other Pacific Islander '
                  '(A person having origins in any of the original peoples of Hawaii, Guam, Samoa, or other Pacific Islands)',
-                 'White(A person having origins in any of the original peoples of Europe, the Middle East, or North Africa)',
+                 'White (A person having origins in any of the original peoples of Europe, the Middle East, or North Africa)',
                  'Not listed or Multiracial','Prefer not to answer'],
         verbose_name='Regardless of your answer to the prior question, please choose one or more of the following groups '
                      'in which you consider yourself to be a member',
@@ -73,9 +73,17 @@ class Player(BasePlayer):
     other_e = models.CharField(blank=True,
                                verbose_name='If "Other," please specify')
 
+    division = models.CharField(
+        choices=['Arts & Humanities', 'Social Sciences', 'Natural Sciences & Engineering','Interdisciplinary Studies','Other', 'Prefer not to answer','Not applicable'],
+        verbose_name='Select the area of your major. If you double major in two different areas, select the one you feel closest to',
+        widget=widgets.RadioSelect()
+    )
+    other_d = models.CharField(blank=True,
+                               verbose_name='If "Other," please specify')
+
 
     q1 = models.CharField(
-        verbose_name='Is outgoing, sociable.',
+        verbose_name='Is outgoing, sociable',
         choices=['1: Disagree Strongly', '2: Disagree a little', '3: No opinion/neutral', '4: Agree a little', '5: Agree strongly'],
         blank=True,
         widget=widgets.RadioSelectHorizontal())
@@ -168,7 +176,7 @@ class Player(BasePlayer):
     q19 = models.PositiveIntegerField(
         blank=True,
         widget=widgets.RadioSelectHorizontal(),
-        verbose_name='Can be tense. ',
+        verbose_name='Can be tense',
         choices=[1, 2, 3, 4, 5])
     q20 = models.PositiveIntegerField(
         widget=widgets.RadioSelectHorizontal(),
